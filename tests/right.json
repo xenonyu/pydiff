@@ -4,7 +4,7 @@
       "MajorVersion": 1,
       "MinorVersion": 0,
       "PolicyVersion": 1,
-      "Name": "OmapTest",
+      "Name": "OmapTest.omapChange",
       "Id": "890CE4E9-7DCE-4F47-A445-5721340E66B5",
       "Owners": [
         "psaravan@microsoft.com",
@@ -186,7 +186,7 @@
           "FrontDoorServices": [
             {
               "Name": "3S",
-              "AcceptedAudienceAppIds": [ "AAD_3S_AppId", "AAD_Substrate_AppId" ],
+              "AcceptedAudienceAppIds": [ "AAD_3S_AppId", "AAD_Substrate_AppId", "xym" ],
               "AcceptedAudienceUris": [ "Aud3S1", "Aud3S2", "Aud3S3" ],
               "AcceptedRpsSiteIds": [ 4345 ],
               "PermissionsAssociatedWithRpsSiteIds": [ "Search.Read", "Search.ReadWrite" ],
@@ -306,16 +306,3 @@
       }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

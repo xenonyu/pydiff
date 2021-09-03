@@ -1,10 +1,9 @@
 {
     "omapChange_890CE4E9-7DCE-4F47-A445-5721340E66B5": [
-      "890CE4E9-7DCE-4F47-A445-5721340E66B5/Name='OmapTest.omapChange'",
-      "890CE4E9-7DCE-4F47-A445-5721340E66B5/ClientAccessProtocols[@AppId='7DA05649-B143-4502-BEF6-E3BF3EB5EBF7']=",
-      "890CE4E9-7DCE-4F47-A445-5721340E66B5/PftAccessProtocols[ActorAppId='FD507B31-934B-4C20-BAD7-7642A730A18E']/FrontDoorServices[@Name='3S']/PftPermissions[@Id='vvnhjfyh8ekw']/TokenUserPermissions=['User.Read', 'Mail.Read']",
-      "890CE4E9-7DCE-4F47-A445-5721340E66B5/ClientAccessProtocols[1]+={'AppScopes': [{'ScopeType': 'Machine', 'ScopeValues': ['Machine A WW', 'Machine B WW']}, {'ScopeType': 'Ring', 'ScopeValues': ['MSIT', 'SDFV2']}], 'Appid': '7DA05649-B143-4502-BEF6-E3BF3EB5EBFaaa', 'AccountTypes': ['OrganizationalAccount', 'ConsumerAccount'], 'AuthorizedAppPermissions': ['Mail.Read', 'Mail.Send'], 'ScopedAuthorizedAppPermissions': [{'Permissions': ['Mail.ReadWrite'], 'ScopeType': 'Machine', 'ScopeValues': ['Machine A WW']}], 'AuthorizedUserPermissions': ['Mail.Read', 'Mail.Send'], 'ScopedAuthorizedUserPermissions': [{'Permissions': ['Mail.ReadWrite'], 'ScopeType': 'Ring', 'ScopeValues': ['SDFV2']}]}",
-      "890CE4E9-7DCE-4F47-A445-5721340E66B5/ClientAccessProtocols[0]/Appid=7DA05649-B143-4502-BEF6-E3BF3EB5EBF*ddd"
+      "890CE4E9-7DCE-4F47-A445-5721340E66B5/Name=OmapTest.omapChange",
+      "890CE4E9-7DCE-4F47-A445-5721340E66B5/ClientAccessProtocols+={'AppScopes': [{'ScopeType': 'Machine', 'ScopeValues': ['Machine A WW', 'Machine B WW']}, {'ScopeType': 'Ring', 'ScopeValues': ['MSIT', 'SDFV2']}], 'Appid': '7DA05649-B143-4502-BEF6-E3BF3EB5EBFaaa', 'AccountTypes': ['OrganizationalAccount', 'ConsumerAccount'], 'AuthorizedAppPermissions': ['Mail.Read', 'Mail.Send'], 'ScopedAuthorizedAppPermissions': [{'Permissions': ['Mail.ReadWrite'], 'ScopeType': 'Machine', 'ScopeValues': ['Machine A WW']}], 'AuthorizedUserPermissions': ['Mail.Read', 'Mail.Send'], 'ScopedAuthorizedUserPermissions': [{'Permissions': ['Mail.ReadWrite'], 'ScopeType': 'Ring', 'ScopeValues': ['SDFV2']}]}",
+      "890CE4E9-7DCE-4F47-A445-5721340E66B5/ClientAccessProtocols[0]/Appid=7DA05649-B143-4502-BEF6-E3BF3EB5EBF*ddd",
+      "890CE4E9-7DCE-4F47-A445-5721340E66B5/PFTAccessProtocols[0]/FrontDoorServices[0]/AcceptedAudienceAppIds+=xym"
     ],
     "omapChange_2f3f02c9-5679-4a5c-a605-0de55b07d135": [
       "2f3f02c9-5679-4a5c-a605-0de55b07d135/HighPrivilegedAccessProtocols[@.ActorAppId='8ee8fdad-f234-4243-8f3b-15c294843740'].AppScopes[@.ScopeType='Ring'].ScopeValues=['xym']",

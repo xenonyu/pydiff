@@ -71,7 +71,6 @@ class MainWindow:
             {'name': 'Go To Line', 'command': self.__goToLine, 'accelerator': 'Ctrl+G'}
             ])
         self.__main_window_ui.fileTreeView.bind('<<TreeviewSelect>>', lambda *x:self.treeViewItemSelected())
-        self.__main_window_ui.rightFileTextArea.bind('<Control-s>', self.__save)
 
         if (leftpath and os.path.isdir(leftpath)) or (rightpath and os.path.isdir(rightpath)):
             self.__load_directories(leftpath, rightpath)
@@ -89,6 +88,7 @@ class MainWindow:
         self.main_window.bind('<Control-g>', lambda *x: self.__goToLine())
         self.main_window.bind('<Escape>', lambda *x: self.__endFindText())
         self.main_window.bind('<F3>', self.__main_window_ui.searchTextDialog.nextResult)
+        self.main_window.bind('<Control-s>', lambda *x: self.__save())
 
     def __browse_files(self):
         self.__load_file('left')

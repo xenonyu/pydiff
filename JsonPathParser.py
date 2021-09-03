@@ -27,6 +27,7 @@ def getJsonPaths(left: dict, right: dict):
             jsonPaths.append(jsonPath + "=")
         if 'add' in r:
             jsonPath = parsePath(r['add'])
+            if jsonPath[-1] == ']' and jsonPath[-3] == '[': jsonPath = jsonPath[:-3]
             jsonPaths.append(jsonPath + "+=" + str(r['value']))
     jsonString = ""
     if jsonPaths:
