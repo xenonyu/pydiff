@@ -186,7 +186,7 @@ class MainWindowUI:
 
         # disable the text areas
         self.leftFileTextArea.config(state=DISABLED)
-        # self.rightFileTextArea.config(state=DISABLED)
+        self.rightFileTextArea.config(state=DISABLED)
 
     def create_json_path_areas(self):
         self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=8, bg=self.grayColor)

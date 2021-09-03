@@ -30,9 +30,9 @@ def getJsonPaths(left: dict, right: dict):
             jsonPaths.append(jsonPath + "+=" + str(r['value']))
     jsonString = ""
     if jsonPaths:
-        jsonString += jsonPaths[0]
+        jsonString += "\"" + jsonPaths[0][1:] + "\""
     for jp in jsonPaths[1:]:
-        jsonString += ",\n" + jp
+        jsonString += "," + "\n" + "\"" + jp[1:] + "\""
     return jsonString
 
 
