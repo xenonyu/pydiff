@@ -21,20 +21,28 @@ def getJsonPaths(left: dict, right: dict):
     for r in diff:
         if 'replace' in r: 
             jsonPath = parsePath(r['replace'])
-            jsonPaths.append(jsonPath + "=" + r['value'])
+            jsonPaths.append(jsonPath + "=" + str(r['value']))
         if 'remove' in r:
             jsonPath = parsePath(r['remove'])
             jsonPaths.append(jsonPath + "=")
-    return jsonPaths
+        if 'add' in r:
+            jsonPath = parsePath(r['add'])
+            jsonPaths.append(jsonPath + "+=" + str(r['value']))
+    jsonString = ""
+    if jsonPaths:
+        jsonString += jsonPaths[0]
+    for jp in jsonPaths[1:]:
+        jsonString += ",\n" + jp
+    return jsonString
 
 
 if __name__ == '__main__':
 
-    with open("./tests/left.omap", 'r') as f:
+    with open("./tests/left.json", 'r') as f:
         left = json.load(f)
         # print(left)
         f.close()
-    with open("./tests/right.omap", 'r') as f:
+    with open("./tests/right.json", 'r') as f:
         right = json.load(f)
         # print(right)
         f.close()

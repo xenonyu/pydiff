@@ -63,6 +63,7 @@ class MainWindowUI:
     searchTextRow = 1
     uniScrollbarRow = lineNumbersRow = textAreasRow = 2
     horizontalScrollbarRow = 3
+    jsonPathTextRow = 4
 
     # Columns
     fileTreeCol = 0
@@ -85,11 +86,12 @@ class MainWindowUI:
     darkYellowColor = '#ffff00'
     purpleLight = '#F5EBFC'
 
-    def __init__(self, window):
+    def __init__(self, window: Tk):
         self.main_window = window
         self.main_window.grid_rowconfigure(self.filePathLabelsRow, weight=0)
         self.main_window.grid_rowconfigure(self.searchTextRow, weight=0)
         self.main_window.grid_rowconfigure(self.textAreasRow, weight=1)
+        self.main_window.grid_rowconfigure(self.jsonPathTextRow, weight=0)
 
         self.main_window.grid_columnconfigure(self.fileTreeCol, weight=0)
         self.main_window.grid_columnconfigure(self.fileTreeScrollbarCol, weight=0)
@@ -161,12 +163,12 @@ class MainWindowUI:
 
     # Text areas
     def create_text_areas(self):
-        self.leftFileTextArea = Text(self.main_window, padx=5, pady=5, width=1, height=1, bg=self.grayColor)
+        self.leftFileTextArea = Text(self.main_window, padx=5, pady=5, width=1, height=1, bg=self.grayColor, undo=True)
         self.leftFileTextArea.grid(row=self.textAreasRow, column=self.leftTextAreaCol, sticky=NSEW)
         self.leftFileTextArea.config(font=self.text_area_font)
         self.leftFileTextArea.config(wrap='none')
 
-        self.rightFileTextArea = Text(self.main_window, padx=5, pady=5, width=1, height=1, bg=self.grayColor)
+        self.rightFileTextArea = Text(self.main_window, padx=5, pady=5, width=1, height=1, bg=self.grayColor, undo=True)
         self.rightFileTextArea.grid(row=self.textAreasRow, column=self.rightTextAreaCol, sticky=NSEW)
         self.rightFileTextArea.config(font=self.text_area_font)
         self.rightFileTextArea.config(wrap='none')
@@ -184,7 +186,15 @@ class MainWindowUI:
 
         # disable the text areas
         self.leftFileTextArea.config(state=DISABLED)
-        self.rightFileTextArea.config(state=DISABLED)
+        # self.rightFileTextArea.config(state=DISABLED)
+
+    def create_json_path_areas(self):
+        self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=8, bg=self.grayColor)
+        self.jsonPathArea.grid(row=self.jsonPathTextRow, column=self.leftFilePathLabelsCol, columnspan=10, rowspan=10, sticky=NSEW)
+        self.jsonPathArea.config(font=self.text_area_font)
+        self.jsonPathArea.config(wrap='none')
+        self.jsonPathArea.config(state=DISABLED)
+
 
     # Line numbers
     def create_line_numbers(self):

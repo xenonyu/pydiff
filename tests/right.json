@@ -3,6 +3,7 @@
     {
       "MajorVersion": 1,
       "MinorVersion": 0,
+      "PolicyVersion": 1,
       "Name": "OmapTest",
       "Id": "890CE4E9-7DCE-4F47-A445-5721340E66B5",
       "Owners": [
@@ -38,7 +39,39 @@
             }
           ],
   
-          "Appid": "7DA05649-B143-4502-BEF6-E3BF3EB5EBF7",
+          "Appid": "7DA05649-B143-4502-BEF6-E3BF3EB5EBF*ddd",
+          "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
+  
+          "AuthorizedAppPermissions": [ "Mail.Read", "Mail.Send" ],
+          "ScopedAuthorizedAppPermissions": [
+            {
+              "Permissions": [ "Mail.ReadWrite" ],
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW" ]
+            }
+          ],
+          "AuthorizedUserPermissions": [ "Mail.Read", "Mail.Send" ],
+          "ScopedAuthorizedUserPermissions": [
+            {
+              "Permissions": [ "Mail.ReadWrite" ],
+              "ScopeType": "Ring",
+              "ScopeValues": [ "SDFV2" ]
+            }
+          ]
+        },
+        {
+          "AppScopes": [
+            {
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT", "SDFV2" ]
+            }
+          ],
+  
+          "Appid": "7DA05649-B143-4502-BEF6-E3BF3EB5EBFaaa",
           "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
   
           "AuthorizedAppPermissions": [ "Mail.Read", "Mail.Send" ],
@@ -109,7 +142,7 @@
             }
           ],
   
-          "ActorAppid": "70E091E0-30F0-43F0-A84C-4D8FB54E30533",
+          "ActorAppid": "70E091E0-30F0-43F0-A84C-4D8FB54E305B",
           "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
           "POPRequired": "true",
           "AllowGlobalActorToken": "false",
@@ -273,3 +306,14 @@
       }
     }
 }
+
+
+
+
+
+
+
+
+
+
+

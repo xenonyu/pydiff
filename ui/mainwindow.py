@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from JsonPathParser import getJsonPaths, json
 import os, mimetypes, filecmp
 from difflibparser.difflibparser import *
 from ui.mainwindow_ui import MainWindowUI
@@ -37,7 +38,7 @@ except ImportError:    # for Python3
 class MainWindow:
     def start(self, leftpath = None, rightpath = None):
         self.main_window = Tk()
-        self.main_window.title('Pydiff')
+        self.main_window.title('Omap Diff')
         self.__main_window_ui = MainWindowUI(self.main_window)
 
         self.leftFile = ''
@@ -50,6 +51,7 @@ class MainWindow:
         self.__main_window_ui.create_line_numbers()
         self.__main_window_ui.create_scroll_bars()
         self.__main_window_ui.create_file_treeview()
+        self.__main_window_ui.create_json_path_areas()
         path_to_my_project = os.getcwd()
         self.__main_window_ui.add_menu('File', [
             {'name': 'Compare Files', 'command': self.__browse_files},
@@ -63,10 +65,13 @@ class MainWindow:
             {'name': 'Cut', 'command': self.__cut, 'accelerator': 'Ctrl+X'},
             {'name': 'Copy', 'command': self.__copy, 'accelerator': 'Ctrl+C'},
             {'name': 'Paste', 'command': self.__paste, 'accelerator': 'Ctrl+P'},
+            {'name': 'Redo', 'command': self.__redo, 'accelerator': "Ctrl+Z"},
+            {'name': 'Save', 'command': self.__save, 'accelerator': 'Ctrl+S'},
             {'separator'},
             {'name': 'Go To Line', 'command': self.__goToLine, 'accelerator': 'Ctrl+G'}
             ])
         self.__main_window_ui.fileTreeView.bind('<<TreeviewSelect>>', lambda *x:self.treeViewItemSelected())
+        self.__main_window_ui.rightFileTextArea.bind('<Control-s>', self.__save)
 
         if (leftpath and os.path.isdir(leftpath)) or (rightpath and os.path.isdir(rightpath)):
             self.__load_directories(leftpath, rightpath)
@@ -223,6 +228,10 @@ class MainWindow:
 
         diff = DifflibParser(leftFileContents.splitlines(), rightFileContents.splitlines())
 
+        jsonStrings = getJsonPaths(json.loads(leftFileContents), json.loads(rightFileContents))
+        print(jsonStrings)
+        self.__main_window_ui.jsonPathArea.config(state=NORMAL)
+
         # enable text area edits so we can clear and insert into them
         self.__main_window_ui.leftFileTextArea.config(state=NORMAL)
         self.__main_window_ui.rightFileTextArea.config(state=NORMAL)
@@ -234,8 +243,10 @@ class MainWindow:
         self.__main_window_ui.rightFileTextArea.delete(1.0, END)
         self.__main_window_ui.leftLinenumbers.delete(1.0, END)
         self.__main_window_ui.rightLinenumbers.delete(1.0, END)
+        self.__main_window_ui.jsonPathArea.delete(1.0, END)
 
         leftlineno = rightlineno = 1
+        self.__main_window_ui.jsonPathArea.insert('end', jsonStrings)
         for line in diff:
             if line['code'] == DiffCode.SIMILAR:
                 self.__main_window_ui.leftFileTextArea.insert('end', line['line'] + '\n')
@@ -274,7 +285,7 @@ class MainWindow:
 
         # disable text areas to prevent further editing
         self.__main_window_ui.leftFileTextArea.config(state=DISABLED)
-        self.__main_window_ui.rightFileTextArea.config(state=DISABLED)
+        self.__main_window_ui.rightFileTextArea.config(state=NORMAL)
         self.__main_window_ui.leftLinenumbers.config(state=DISABLED)
         self.__main_window_ui.rightLinenumbers.config(state=DISABLED)
 
@@ -292,6 +303,19 @@ class MainWindow:
         area = self.__getActiveTextArea()
         if area:
             area.event_generate("<<Paste>>")
+
+    def __redo(self):
+        area = self.__getActiveTextArea()
+        if area:
+            area.event_generate("<<Redo>>")
+
+    def __save(self):
+        filename = self.rightFile
+        if filename:
+            f = open(filename, 'w')
+            f.write(self.__main_window_ui.rightFileTextArea.get(1.0, 'end'))
+            self.filesChanged()
+
 
     def __getActiveTextArea(self):
         if self.main_window.focus_get() == self.__main_window_ui.leftFileTextArea:
