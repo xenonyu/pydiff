@@ -1,0 +1,275 @@
+{
+    "890CE4E9-7DCE-4F47-A445-5721340E66B5":
+    {
+      "MajorVersion": 1,
+      "MinorVersion": 0,
+      "Name": "OmapTest",
+      "Id": "890CE4E9-7DCE-4F47-A445-5721340E66B5",
+      "Owners": [
+        "psaravan@microsoft.com",
+        "gkaplin@microsoft.com",
+        "o365coreauth@microsoft.com"
+      ],
+      "Enabled": true,
+      "CreatedTime": "10/2/2017 11:44:39 AM",
+      "ApiUrlSurfaces": [ "https://outlook.office.com/test" ],
+      "ApiPermissions": [
+        "Mail.Read",
+        "Mail.Send",
+        "Mail.ReadWrite",
+        "Contacts.ReadWrite",
+        "SDS-Internal.ReadWrite",
+        "SDS.Read",
+        "Search.Read",
+        "Search.ReadWrite",
+        "Insights.Read",
+        "Insights.ReadWrite"
+      ],
+      "ClientAccessProtocols": [
+        {
+          "AppScopes": [
+            {
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT", "SDFV2" ]
+            }
+          ],
+  
+          "Appid": "7DA05649-B143-4502-BEF6-E3BF3EB5EBF7",
+          "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
+  
+          "AuthorizedAppPermissions": [ "Mail.Read", "Mail.Send" ],
+          "ScopedAuthorizedAppPermissions": [
+            {
+              "Permissions": [ "Mail.ReadWrite" ],
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW" ]
+            }
+          ],
+          "AuthorizedUserPermissions": [ "Mail.Read", "Mail.Send" ],
+          "ScopedAuthorizedUserPermissions": [
+            {
+              "Permissions": [ "Mail.ReadWrite" ],
+              "ScopeType": "Ring",
+              "ScopeValues": [ "SDFV2" ]
+            }
+          ]
+        }
+      ],
+      "HighPrivilegedAccessProtocols": [
+        {
+          "AppScopes": [
+            {
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT", "SDFV2" ]
+            }
+          ],
+  
+          "ActorAppid": "70E091E0-30F0-43F0-A84C-4D8FB54E305B",
+          "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
+          "POPRequired": "true",
+          "AllowGlobalActorToken": "false",
+          "AcceptedLinkedUser": [ "MSOSyncLinkedUser" ],
+          "AcceptedUserPermissions": [ "Mail.Read" ],
+          "AcceptedAppPermissions": [ "Contacts.ReadWrite" ],
+          "ScopedAcceptedAppPermissions": [
+            {
+              "Permissions": [ "Contacts.ReadWrite", "SDS-Internal.ReadWrite", "SDS.Read" ],
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "Permissions": [ "SDS.Read" ],
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT" ]
+            },
+            {
+              "Permissions": [ "Contacts.ReadWrite", "SDS-Internal.ReadWrite", "SDS.Read" ],
+              "ScopeType": "Forest",
+              "ScopeValues": [ "NAMPRD21.prod.outlook.com" ]
+            }
+          ]
+        },        
+        {
+          "AppScopes": [
+            {
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT", "SDFV2" ]
+            }
+          ],
+  
+          "ActorAppid": "70E091E0-30F0-43F0-A84C-4D8FB54E30533",
+          "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
+          "POPRequired": "true",
+          "AllowGlobalActorToken": "false",
+          "AcceptedLinkedUser": [ "MSOSyncLinkedUser" ],
+          "AcceptedUserPermissions": [ "Mail.Read" ],
+          "AcceptedAppPermissions": [ "Contacts.ReadWrite" ],
+          "ScopedAcceptedAppPermissions": [
+            {
+              "Permissions": [ "Contacts.ReadWrite", "SDS-Internal.ReadWrite", "SDS.Read" ],
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "Permissions": [ "SDS.Read" ],
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT" ]
+            },
+            {
+              "Permissions": [ "Contacts.ReadWrite", "SDS-Internal.ReadWrite", "SDS.Read" ],
+              "ScopeType": "Forest",
+              "ScopeValues": [ "NAMPRD21.prod.outlook.com" ]
+            }
+          ]
+        }
+      ],
+      "PFTAccessProtocols": [
+        {
+          "AppScopes": [
+            {
+              "ScopeType": "Machine",
+              "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+            },
+            {
+              "ScopeType": "Ring",
+              "ScopeValues": [ "MSIT", "SDFV2" ]
+            }
+          ],
+  
+          "ActorAppid": "FD507B31-934B-4C20-BAD7-7642A730A18E",
+          "Name": "SubstrateSearch",
+          "FrontDoorServices": [
+            {
+              "Name": "3S",
+              "AcceptedAudienceAppIds": [ "AAD_3S_AppId", "AAD_Substrate_AppId" ],
+              "AcceptedAudienceUris": [ "Aud3S1", "Aud3S2", "Aud3S3" ],
+              "AcceptedRpsSiteIds": [ 4345 ],
+              "PermissionsAssociatedWithRpsSiteIds": [ "Search.Read", "Search.ReadWrite" ],
+              "MSAOriginalAccessToken": [
+                {
+                  "AcceptedRpsSiteIds": [ 4345 ],
+                  "PermissionsAssociatedWithRpsSiteIds": [ "Search.Read", "Search.ReadWrite" ]
+                },
+                {
+                  "AcceptedRpsSiteIds": [ 4346 ],
+                  "PermissionsAssociatedWithRpsSiteIds": [ "Search.Read" ],
+                  "AppId": "000000004C1631DD",
+                  "PermissionsInAccessToken": [ "Mail.Read", "Mail.Write" ],
+                  "ScopedPermissionsInAccessTokens": [
+                      {
+                          "ScopeType": "Machine",
+                          "ScopeValues": [ "Machine A WW", "Machine B WW" ],
+                          "Permissions": [ "Mail.Read", "Mail.Write" ]
+                      }
+                  ]
+                },
+                {
+                  "AcceptedRpsSiteIds": [ 4347 ],
+                  "PermissionsAssociatedWithRpsSiteIds": [ "Search.ReadWrite" ],
+                  "AppId": "000000004C1631DE",
+                  "PermissionsInAccessToken": [ "Mail.Read", "Mail.Write" ],
+                  "ScopedPermissionsInAccessTokens": [
+                      {
+                          "ScopeType": "Machine",
+                          "ScopeValues": [ "Machine A WW" ],
+                          "Permissions": [ "Mail.Read", "Mail.Write" ]
+                      }
+                  ]
+                }
+              ],
+              "PftPermissions": [
+                {
+                  "TokenUserPermissions": [ "Insights.Read" ],
+                  "AdditionalAssignedUserPermissions": [ "Mail.Read" ]
+                },
+                {
+                  "TokenUserPermissions": [ "Insights.ReadWrite" ],
+                  "AdditionalAssignedUserPermissions": [ "Mail.ReadWrite" ]
+                },
+                {
+                  "TokenAppPermissions": [ "Insights.Read" ],
+                  "AdditionalAssignedAppPermissions": [ "Mail.ReadWrite", "Mail.Send" ]
+                }
+              ],
+              "ScopedPftPermissions": [
+                {
+                  "PftPermissions": [
+                    {
+                      "TokenUserPermissions": [ "Insights.ReadWrite" ],
+                      "AdditionalAssignedUserPermissions": [ "Mail.ReadWrite" ]
+                    },
+                    {
+                      "TokenAppPermissions": [ "Insights.Read" ],
+                      "AdditionalAssignedAppPermissions": [ "Mail.ReadWrite", "Mail.Send" ]
+                    }
+                  ],
+                  "ScopeType": "Machine",
+                  "ScopeValues": [ "Machine A WW" ]
+                },
+                {
+                  "PftPermissions": [
+                    {
+                      "TokenUserPermissions": [ "Insights.Read", "Insights.ReadWrite" ],
+                      "AdditionalAssignedUserPermissions": [ "Mail.Read", "Mail.ReadWrite" ]
+                    },
+                    {
+                      "TokenAppPermissions": [ "Calendar.Read" ],
+                      "AdditionalAssignedAppPermissions": [ "Mail.ReadWrite" ]
+                    }
+                  ],
+                  "ScopeType": "Machine",
+                  "ScopeValues": [ "Machine B WW" ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AuthorizationRules": {
+        "InvokeCommandRules": [
+          {
+            "AppId": "4aa90d27-3483-42cc-a4f9-79d13a0eeda2",
+            "AppScopes": [
+              {
+                "ScopeType": "Machine",
+                "ScopeValues": [ "Machine A WW", "Machine B WW" ]
+              },
+              {
+                "ScopeType": "Ring",
+                "ScopeValues": [ "Dev", "SDFV2", "MSIT" ]
+              }
+            ],
+            "CmdletPermissions": {
+              "Test-Cmdlet1": [ "Parameter1", "Parameter2", "Parameter3", "Parameter4" ],
+              "Test-Cmdlet2": [ "Parameter1" ]
+            }
+          },
+          {
+            "AppId": "2686cf96-e2be-43da-afa5-5af4278cc595",
+            "AppScopes": [
+              {
+                "ScopeType": "Ring",
+                "ScopeValues": [ "Dev", "SDFV2" ]
+              }
+            ],
+            "CmdletPermissions": {
+              "Test-Cmdlet1": [ "Parameter1", "Parameter2", "Parameter3", "Parameter4" ],
+              "Test-Cmdlet2": [ "Parameter1", "Parameter2" ]
+            }
+          }
+        ]
+      }
+    }
+}
