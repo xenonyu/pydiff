@@ -1,5 +1,5 @@
 from os import path
-import json_tools
+import jsontool
 import json
 from typing import *
 
@@ -16,7 +16,7 @@ def parsePath(originPath: str):
     return jsonPath
 
 def getJsonPaths(left: dict, right: dict):
-    diff = json_tools.diff(left, right)
+    diff = jsontool.diff(left, right)
     jsonPaths = []
     for r in diff:
         if 'replace' in r: 
