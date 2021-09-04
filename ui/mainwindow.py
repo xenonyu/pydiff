@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from JsonPathParser import getJsonPaths, json
+from JsonPathParser import JsonParser, json
 import os, mimetypes, filecmp
 from difflibparser.difflibparser import *
 from ui.mainwindow_ui import MainWindowUI
@@ -228,7 +228,7 @@ class MainWindow:
 
         diff = DifflibParser(leftFileContents.splitlines(), rightFileContents.splitlines())
 
-        jsonStrings = getJsonPaths(json.loads(leftFileContents), json.loads(rightFileContents))
+        jsonStrings = JsonParser().getJsonPaths(json.loads(leftFileContents), json.loads(rightFileContents))
         print(jsonStrings)
         self.__main_window_ui.jsonPathArea.config(state=NORMAL)
 
