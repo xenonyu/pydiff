@@ -4,7 +4,7 @@
       "MajorVersion": 1,
       "MinorVersion": 0,
       "PolicyVersion": 1,
-      "Name": "OmapTest",
+      "Name": "OmapTest.ecs",
       "Id": "890CE4E9-7DCE-4F47-A445-5721340E66B5",
       "Owners": [
         "psaravan@microsoft.com",

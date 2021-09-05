@@ -102,7 +102,8 @@ class MainWindowUI:
         self.main_window.grid_columnconfigure(self.rightTextAreaCol, weight=1)
         self.menubar = Menu(self.main_window)
         self.menus = {}
-        self.text_area_font = 'TkFixedFont'
+        self.text_area_font = ('bold', 20)
+        self.label_area_font = ('bold', 16)
 
     # Center window and set its size
     def center_window(self):
@@ -130,8 +131,10 @@ class MainWindowUI:
     def create_file_path_labels(self):
         self.leftFileLabel = Label(self.main_window, anchor='center', width=1000, background=self.lightGrayColor)
         self.leftFileLabel.grid(row=self.filePathLabelsRow, column=self.leftFilePathLabelsCol, columnspan=2)
+        self.leftFileLabel.config(font=self.label_area_font)
         self.rightFileLabel = Label(self.main_window, anchor='center', width=1000, background=self.lightGrayColor)
         self.rightFileLabel.grid(row=self.filePathLabelsRow, column=self.rightFilePathLabelsCol, columnspan=2)
+        self.rightFileLabel.config(font=self.label_area_font)
 
     # Search text entry
     def create_search_text_entry(self, searchButtonCallback):
@@ -191,7 +194,7 @@ class MainWindowUI:
     def create_json_path_areas(self):
         self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=8, bg=self.grayColor)
         self.jsonPathArea.grid(row=self.jsonPathTextRow, column=self.leftTextAreaCol, columnspan=10, rowspan=10, sticky=NSEW)
-        self.jsonPathArea.config(font='bold')
+        self.jsonPathArea.config(font=self.text_area_font)
         self.jsonPathArea.tag_configure('darkred', foreground=self.darkredColor)
         self.jsonPathArea.config(wrap='none')
         # self.jsonPathArea.config(state=DISABLED)
@@ -211,7 +214,7 @@ class MainWindowUI:
 
         self.jsonPathAreaNumbers = Text(self.main_window, width=3, padx=5,  pady=5,  height=8, bg=self.lightGrayColor)
         self.jsonPathAreaNumbers.grid(row=self.jsonPathTextNumberRow,  column=self.leftLineNumbersCol, sticky=NS)
-        self.jsonPathAreaNumbers.config(font='bold')
+        self.jsonPathAreaNumbers.config(font=self.text_area_font)
         self.jsonPathAreaNumbers.tag_configure('line', justify='right')
 
         # disable the line numbers

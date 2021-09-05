@@ -86,10 +86,13 @@ class MainWindow:
 
     def __bind_key_shortcuts(self):
         self.main_window.bind('<Control-f>', lambda *x: self.__startFindText())
+        self.main_window.bind('<Command-f>', lambda *x: self.__startFindText())
         self.main_window.bind('<Control-g>', lambda *x: self.__goToLine())
+        self.main_window.bind('<Command-g>', lambda *x: self.__goToLine())
         self.main_window.bind('<Escape>', lambda *x: self.__endFindText())
         self.main_window.bind('<F3>', self.__main_window_ui.searchTextDialog.nextResult)
         self.main_window.bind('<Control-s>', lambda *x: self.__save())
+        self.main_window.bind('<Command-s>', lambda *x: self.__save())
 
     def __browse_files(self):
         self.__load_file('left')
