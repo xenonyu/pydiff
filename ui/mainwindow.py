@@ -304,8 +304,9 @@ class MainWindow:
             if jsonPaths[0].startswith("Error"):
                 self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'darkred')
             else:
-                self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'line')
                 pyperclip.copy(",\n".join(jsonPaths))
+                self.__main_window_ui.jsonPathArea.insert('end', "successfully output to your clipboard\n", 'darkred')
+                self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'line')
         # calc width of line numbers texts and set it
         self.__main_window_ui.leftLinenumbers.config(width=len(str(leftlineno)))
         self.__main_window_ui.rightLinenumbers.config(width=len(str(rightlineno)))

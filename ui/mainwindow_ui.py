@@ -74,6 +74,8 @@ class MainWindowUI:
     rightLineNumbersCol = rightFilePathLabelsCol = 5  # should span at least two columns
     rightTextAreaCol = rightHorizontalScrollbarCol = 6
 
+    jsonPathAreaHeight = jsonPathAreaNumbersHeight = 8
+
     # Colors
     whiteColor = '#ffffff'
     redColor = '#ffc4c4'
@@ -192,7 +194,7 @@ class MainWindowUI:
         self.rightFileTextArea.config(state=DISABLED)
 
     def create_json_path_areas(self):
-        self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=8, bg=self.grayColor)
+        self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=self.jsonPathAreaHeight, bg=self.grayColor)
         self.jsonPathArea.grid(row=self.jsonPathTextRow, column=self.leftTextAreaCol, columnspan=10, rowspan=10, sticky=NSEW)
         self.jsonPathArea.config(font=self.text_area_font)
         self.jsonPathArea.tag_configure('darkred', foreground=self.darkredColor)
@@ -212,7 +214,7 @@ class MainWindowUI:
         self.rightLinenumbers.config(font=self.text_area_font)
         self.rightLinenumbers.tag_configure('line', justify='right')
 
-        self.jsonPathAreaNumbers = Text(self.main_window, width=3, padx=5,  pady=5,  height=8, bg=self.lightGrayColor)
+        self.jsonPathAreaNumbers = Text(self.main_window, width=3, padx=5,  pady=5,  height=self.jsonPathAreaNumbersHeight, bg=self.lightGrayColor)
         self.jsonPathAreaNumbers.grid(row=self.jsonPathTextNumberRow,  column=self.leftLineNumbersCol, sticky=NS)
         self.jsonPathAreaNumbers.config(font=self.text_area_font)
         self.jsonPathAreaNumbers.tag_configure('line', justify='right')
