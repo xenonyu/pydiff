@@ -93,12 +93,9 @@ class JsonParser(object):
                 jsonPath = self.parsePath(r['add'])
                 if jsonPath[-1] == ']' and jsonPath[-3] == '[': jsonPath = jsonPath[:-3]
                 jsonPaths.append(jsonPath + "+=" + str(r['value']))
-        jsonString = ""
-        if jsonPaths:
-            jsonString += "\"" + jsonPaths[0][1:] + "\""
-        for jp in jsonPaths[1:]:
-            jsonString += "," + "\n" + "\"" + jp[1:] + "\""
-        return jsonString
+        for i in range(len(jsonPaths)):
+            jsonPaths[i] = "\"" + jsonPaths[i][1:] + "\""
+        return jsonPaths
 
 
 if __name__ == '__main__':
@@ -112,4 +109,6 @@ if __name__ == '__main__':
         # print(right)
         f.close()
     JsonParser()
-    print(JsonParser().getJsonPaths(left, right))
+    res = (JsonParser().getJsonPaths(left, right))
+    for line in res:
+        print(line)

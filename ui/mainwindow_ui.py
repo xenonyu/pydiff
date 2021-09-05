@@ -63,7 +63,7 @@ class MainWindowUI:
     searchTextRow = 1
     uniScrollbarRow = lineNumbersRow = textAreasRow = 2
     horizontalScrollbarRow = 3
-    jsonPathTextRow = 4
+    jsonPathTextRow = jsonPathTextNumberRow = 4
 
     # Columns
     fileTreeCol = 0
@@ -190,10 +190,11 @@ class MainWindowUI:
 
     def create_json_path_areas(self):
         self.jsonPathArea = Text(self.main_window, padx=5, pady=5, width=1, height=8, bg=self.grayColor)
-        self.jsonPathArea.grid(row=self.jsonPathTextRow, column=self.leftFilePathLabelsCol, columnspan=10, rowspan=10, sticky=NSEW)
-        self.jsonPathArea.config(font=self.text_area_font)
+        self.jsonPathArea.grid(row=self.jsonPathTextRow, column=self.leftTextAreaCol, columnspan=10, rowspan=10, sticky=NSEW)
+        self.jsonPathArea.config(font='bold')
+        self.jsonPathArea.tag_configure('darkred', foreground=self.darkredColor)
         self.jsonPathArea.config(wrap='none')
-        self.jsonPathArea.config(state=DISABLED)
+        # self.jsonPathArea.config(state=DISABLED)
 
 
     # Line numbers
@@ -208,9 +209,15 @@ class MainWindowUI:
         self.rightLinenumbers.config(font=self.text_area_font)
         self.rightLinenumbers.tag_configure('line', justify='right')
 
+        self.jsonPathAreaNumbers = Text(self.main_window, width=3, padx=5,  pady=5,  height=8, bg=self.lightGrayColor)
+        self.jsonPathAreaNumbers.grid(row=self.jsonPathTextNumberRow,  column=self.leftLineNumbersCol, sticky=NS)
+        self.jsonPathAreaNumbers.config(font='bold')
+        self.jsonPathAreaNumbers.tag_configure('line', justify='right')
+
         # disable the line numbers
         self.leftLinenumbers.config(state=DISABLED)
         self.rightLinenumbers.config(state=DISABLED)
+        self.jsonPathAreaNumbers.config(state=DISABLED)
 
     # Scroll bars
     def scrollBothY(self, action, position, type=None):

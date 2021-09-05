@@ -26,6 +26,7 @@ from JsonPathParser import JsonParser, json
 import os, mimetypes, filecmp
 from difflibparser.difflibparser import *
 from ui.mainwindow_ui import MainWindowUI
+import pyperclip
 try:    # for Python2
     from Tkinter import *
     from tkFileDialog import askopenfilename, askdirectory
@@ -159,7 +160,7 @@ class MainWindow:
         return painted
 
     def __load_file(self, pos):
-        fname = askopenfilename()
+        fname = askopenfilename(defaultextension='.json')
         if fname:
             if pos == 'left':
                 self.leftFile = fname
@@ -228,8 +229,12 @@ class MainWindow:
 
         diff = DifflibParser(leftFileContents.splitlines(), rightFileContents.splitlines())
 
-        jsonStrings = JsonParser().getJsonPaths(json.loads(leftFileContents), json.loads(rightFileContents))
-        print(jsonStrings)
+        try:
+            jsonPaths = JsonParser().getJsonPaths(json.loads(leftFileContents), json.loads(rightFileContents))
+        except Exception as e:
+            jsonPaths = ("Error: " + str(e)).split('\n')
+        
+        # print(jsonStrings)
         self.__main_window_ui.jsonPathArea.config(state=NORMAL)
 
         # enable text area edits so we can clear and insert into them
@@ -237,6 +242,7 @@ class MainWindow:
         self.__main_window_ui.rightFileTextArea.config(state=NORMAL)
         self.__main_window_ui.leftLinenumbers.config(state=NORMAL)
         self.__main_window_ui.rightLinenumbers.config(state=NORMAL)
+        self.__main_window_ui.jsonPathAreaNumbers.config(state=NORMAL)
 
         # clear all text areas
         self.__main_window_ui.leftFileTextArea.delete(1.0, END)
@@ -244,9 +250,9 @@ class MainWindow:
         self.__main_window_ui.leftLinenumbers.delete(1.0, END)
         self.__main_window_ui.rightLinenumbers.delete(1.0, END)
         self.__main_window_ui.jsonPathArea.delete(1.0, END)
+        self.__main_window_ui.jsonPathAreaNumbers.delete(1.0, END)
 
         leftlineno = rightlineno = 1
-        self.__main_window_ui.jsonPathArea.insert('end', jsonStrings)
         for line in diff:
             if line['code'] == DiffCode.SIMILAR:
                 self.__main_window_ui.leftFileTextArea.insert('end', line['line'] + '\n')
@@ -278,16 +284,37 @@ class MainWindow:
                 self.__main_window_ui.rightLinenumbers.insert('end', str(rightlineno) + '\n', 'line')
                 leftlineno += 1
                 rightlineno += 1
-
+        # for i, jsonPath in enumerate(jsonPaths):
+        #     if i == 0:
+        #         if jsonPaths[0].startswith("Error"):
+        #             self.__main_window_ui.jsonPathArea.insert('end', jsonPaths[0], 'darkred')
+        #             self.__main_window_ui.jsonPathAreaNumbers.insert('end', '0'  + '\n', 'line')
+        #             continue
+                
+        #         self.__main_window_ui.jsonPathArea.insert('end', jsonPaths[0])
+        #         self.__main_window_ui.jsonPathAreaNumbers.insert('end', '0'  + '\n', 'line')
+        #         continue
+        #     self.__main_window_ui.jsonPathArea.insert('end', ",\n" + jsonPath)
+        #     self.__main_window_ui.jsonPathAreaNumbers.insert('end', str(i) + '\n', 'line')
+        self.__main_window_ui.jsonPathAreaNumbers.insert('end', '\n'.join([str(i+1) for i in range(len(jsonPaths))]), 'line')
+        if jsonPaths:
+            if jsonPaths[0].startswith("Error"):
+                self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'darkred')
+            else:
+                self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'line')
+                pyperclip.copy(",\n".join(jsonPaths))
         # calc width of line numbers texts and set it
         self.__main_window_ui.leftLinenumbers.config(width=len(str(leftlineno)))
         self.__main_window_ui.rightLinenumbers.config(width=len(str(rightlineno)))
+        self.__main_window_ui.jsonPathAreaNumbers.config(width=len(str(len(jsonPaths))))
 
         # disable text areas to prevent further editing
         self.__main_window_ui.leftFileTextArea.config(state=DISABLED)
         self.__main_window_ui.rightFileTextArea.config(state=NORMAL)
         self.__main_window_ui.leftLinenumbers.config(state=DISABLED)
         self.__main_window_ui.rightLinenumbers.config(state=DISABLED)
+        # self.__main_window_ui.jsonPathArea.config(state=DISABLED)
+        self.__main_window_ui.jsonPathAreaNumbers.config(state=DISABLED)
 
     def __cut(self):
         area = self.__getActiveTextArea()
