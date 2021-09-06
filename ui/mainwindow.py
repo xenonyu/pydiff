@@ -307,7 +307,7 @@ class MainWindow:
             else:
                 pyperclip.copy(",\n".join(jsonPaths))
                 self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'line')
-                messagebox.showinfo(message="successfully output to your clipboard\n")
+                # messagebox.showinfo(message="successfully output to your clipboard\n")
         # calc width of line numbers texts and set it
         self.__main_window_ui.leftLinenumbers.config(width=len(str(leftlineno)))
         self.__main_window_ui.rightLinenumbers.config(width=len(str(rightlineno)))
@@ -345,7 +345,8 @@ class MainWindow:
         filename = self.rightFile
         if filename:
             f = open(filename, 'w')
-            f.write(self.__main_window_ui.rightFileTextArea.get(1.0, 'end'))
+            res = self.__main_window_ui.rightFileTextArea.get(1.0, 'end')
+            f.write(self.__main_window_ui.rightFileTextArea.get(1.0, 'end')[:-2])
             self.filesChanged()
 
 
