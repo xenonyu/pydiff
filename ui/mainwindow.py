@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from tkinter import messagebox
 from JsonPathParser import JsonParser, json
 import os, mimetypes, filecmp
 from difflibparser.difflibparser import *
@@ -305,8 +306,8 @@ class MainWindow:
                 self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'darkred')
             else:
                 pyperclip.copy(",\n".join(jsonPaths))
-                self.__main_window_ui.jsonPathArea.insert('end', "successfully output to your clipboard\n", 'darkred')
                 self.__main_window_ui.jsonPathArea.insert('end', ",\n".join(jsonPaths), 'line')
+                messagebox.showinfo(message="successfully output to your clipboard\n")
         # calc width of line numbers texts and set it
         self.__main_window_ui.leftLinenumbers.config(width=len(str(leftlineno)))
         self.__main_window_ui.rightLinenumbers.config(width=len(str(rightlineno)))
