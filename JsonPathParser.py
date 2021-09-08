@@ -3,13 +3,21 @@ import jsontool
 import json
 from typing import *
 
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
+
+@static_vars(instances = {})
 def singleton(cls):
-    instances = {}
     def wrapper(*args, **kwargs):
-        if cls not in instances:
-            instances[cls] = cls(*args, **kwargs)
-        return instances[cls]
+        if cls not in singleton.instances:
+            singleton.instances[cls] = cls(*args, **kwargs)
+        return singleton.instances[cls]
     return wrapper
+
 
 @singleton
 class JsonParser(object):

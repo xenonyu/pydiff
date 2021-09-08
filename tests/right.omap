@@ -58,7 +58,8 @@
               "ScopeValues": [ "SDFV2" ]
             }
           ]
-        },
+        }
+        ,
         {
           "AppScopes": [
             {
@@ -74,23 +75,20 @@
           "Appid": "7DA05649-B143-4502-BEF6-E3BF3EB5EBFaaa",
           "AccountTypes": [ "OrganizationalAccount", "ConsumerAccount" ],
   
-          "AuthorizedAppPermissions": [ "Mail.Read", "Mail.Send" ],
+          "AuthorizedAppPermissions": [ "Mail.Read1", "Mail.Send" ],
           "ScopedAuthorizedAppPermissions": [
             {
-              "Permissions": [ "Mail.ReadWrite" ],
-              "ScopeType": "Machine",
-              "ScopeValues": [ "Machine A WW" ]
+              "Permissions": [ "Mail.ReadWrite1" ],
+              "ScopeType": "Machine1",
+              "ScopeValues": [ "Machine A W" ]
             }
           ],
-          "AuthorizedUserPermissions": [ "Mail.Read", "Mail.Send" ],
+          "AuthorizedUserPermissions": [ "Mail.Read1", "Mail.Send" ],
           "ScopedAuthorizedUserPermissions": [
             {
-              "Permissions": [ "Mail.ReadWrite" ],
-              "ScopeType": "Ring",
-              "ScopeValues": [ "SDFV2" ]
-            }
-          ]
-        }
+              "Permissions": [ "Mail.ReadWrite1" ],
+              "ScopeType": "Ring1",
+              "ScopeValues": [ "SDFV21" ]}]}
       ],
       "HighPrivilegedAccessProtocols": [
         {

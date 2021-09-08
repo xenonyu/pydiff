@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: PYDIFF",
+            "name": "Python: OmapDiff",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceRoot}/pydiff.py",
+            "program": "${workspaceRoot}/OmapDiff.py",
             "console": "integratedTerminal"
         },
         {

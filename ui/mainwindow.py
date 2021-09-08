@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from tkinter import messagebox
 from JsonPathParser import JsonParser, json
 import os, mimetypes, filecmp
 from difflibparser.difflibparser import *
@@ -40,6 +39,9 @@ except ImportError:    # for Python3
 class MainWindow:
     def start(self, leftpath = None, rightpath = None):
         self.main_window = Tk()
+        # self.main_window.iconbitmap('./logo.icns')
+        # img = Image("photo", file="./logo.icns")
+        # self.main_window.iconphoto(True, img)
         self.main_window.title('Omap Diff')
         self.__main_window_ui = MainWindowUI(self.main_window)
 
